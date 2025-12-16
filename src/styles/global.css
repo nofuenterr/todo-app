@@ -1,9 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
 	font-family: 'Josefin Sans';
-	src: url('../assets/fonts/JosefinSans-Regular.woff2') format('woff2'),
-			url('../assets/fonts/JosefinSans-Regular.woff') format('woff');
+	src:
+		url('../assets/fonts/JosefinSans-Regular.woff2') format('woff2'),
+		url('../assets/fonts/JosefinSans-Regular.woff') format('woff');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
@@ -11,33 +12,34 @@
 
 @font-face {
 	font-family: 'Josefin Sans';
-	src: url('../assets/fonts/JosefinSans-Bold.woff2') format('woff2'),
-			url('../assets/fonts/JosefinSans-Bold.woff') format('woff');
+	src:
+		url('../assets/fonts/JosefinSans-Bold.woff2') format('woff2'),
+		url('../assets/fonts/JosefinSans-Bold.woff') format('woff');
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
 }
 
 @theme {
-  --color-*: initial;
-  --color-white: #FFFFFF;
-  --color-black: #000000;
-  --color-purple-800: #39384B;
-  --color-purple-700: #4D5067;
-  --color-purple-600: #5B5E7E;
-  --color-purple-300: #C8CBE7;
-  --color-purple-100: #E3E4F1;
-  --color-gray-600: #9495A5;
-  --color-gray-300: #D1D2DA;
-  --color-gray-50: #FAFAFA;
-  --color-navy-950: #171823;
-  --color-navy-900: #25273D;
-  --color-navy-850: #494C6B;
-  --color-blue-500: #3A7CFD;
-  --color-gradient-1-start: #55DDFF;
-  --color-gradient-1-end: #C058F3;
-  --color-gradient-2-start: #3710BD;
-  --color-gradient-2-end: #A42395;
+	--color-*: initial;
+	--color-white: #ffffff;
+	--color-black: #000000;
+	--color-purple-800: #39384b;
+	--color-purple-700: #4d5067;
+	--color-purple-600: #5b5e7e;
+	--color-purple-300: #c8cbe7;
+	--color-purple-100: #e3e4f1;
+	--color-gray-600: #9495a5;
+	--color-gray-300: #d1d2da;
+	--color-gray-50: #fafafa;
+	--color-navy-950: #171823;
+	--color-navy-900: #25273d;
+	--color-navy-850: #494c6b;
+	--color-blue-500: #3a7cfd;
+	--color-gradient-1-start: #55ddff;
+	--color-gradient-1-end: #c058f3;
+	--color-gradient-2-start: #3710bd;
+	--color-gradient-2-end: #a42395;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -51,7 +53,7 @@
 }
 
 body {
-  min-width: 320px;
-  min-height: 100vh;
-  @apply bg-gray-50 dark:bg-navy-950;
+	min-width: 320px;
+	min-height: 100vh;
+	@apply dark:bg-navy-950 bg-gray-50;
 }
