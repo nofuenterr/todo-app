@@ -1,4 +1,4 @@
-## Project Source here (if any)
+## Project Source here
 Frontend Mentor
 # Project Title here
 Todo App
@@ -47,11 +47,12 @@ This project is for personal use only. I do not own any of the rights for the as
 ![Phone](public/display-phone.png)
 
 ### To-do
-[-] Automatically remove todo when toggling them on an active filter that isn't 'All'
-[-] Edit todo titles
-[-] More noticeable buttons/icons
-[-] Drag and drop feature to reorder list
-[-] Fix checkbox size warping when todo title is lengthy
+- [ ] Automatically remove todo when toggling them on an active filter that isn't 'All'
+- [ ] Edit todo titles
+- [ ] More noticeable buttons/icons
+- [ ] Drag and drop feature to reorder list
+- [ ] Fix checkbox size warping when todo title is lengthy
+- [ ] Add animations
 
 ---
 
