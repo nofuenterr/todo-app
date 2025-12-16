@@ -7,23 +7,25 @@ import { ToggleGroup } from "radix-ui";
 
 export default function Main() {
   const todoIds = useTodoStore(s => s.todoIds)
-  const filterTodoIds = useTodoStore(s => s.filterTodoIds)
   const deleteCompletedTodos = useTodoStore(s => s.deleteCompletedTodos)
 
   return (
-    <main className='grid gap-4'> 
+    <main className='grid gap-4 overflow-hidden drop-shadow-md'> 
       <AddTodo />
 
       {todoIds.length !== 0
         ? (
-          <div className='bg-white dark:bg-navy-900 rounded-sm drop-shadow-md'>
-            <ul className='text-navy-850 dark:text-purple-100 '>
+          <div className='bg-white dark:bg-navy-900 rounded-sm overflow-scroll'>
+            <ul className='text-navy-850 dark:text-purple-100'>
               {todoIds.map(id => {
                 return <TodoItem key={id} id={id} />
               })}
             </ul>
             <div className='text-gray-600 dark:text-purple-600 py-4 px-5 flex justify-between items-center'>
               <span aria-label='Number of todos'>{todoIds.length} items</span>
+              <div className='hidden sm:inline-block bg-white dark:bg-navy-900 text-gray-600 dark:text-purple-600'>
+                <FilterGroup />
+              </div>
               <button className='cursor-pointer' onClick={deleteCompletedTodos} aria-label='Clear completed todos'>Clear Completed</button>
             </div>
           </div>
@@ -35,35 +37,8 @@ export default function Main() {
         )
       }
 
-      <div className='bg-white dark:bg-navy-900 text-gray-600 dark:text-purple-600 py-4 grid place-content-center rounded-sm drop-shadow-md'>
-        <ToggleGroup.Root
-          className='flex items-center gap-4 *:cursor-pointer *:aria-checked:text-blue-500'
-          type="single"
-          defaultValue="all"
-          aria-label="Filter todos"
-        >
-          <ToggleGroup.Item
-            value="all"
-            aria-label="All todos"
-            onClick={() => filterTodoIds('all')}
-          >
-            <span>All</span>
-          </ToggleGroup.Item>
-          <ToggleGroup.Item
-            value="active"
-            aria-label="Active todos"
-            onClick={() => filterTodoIds('active')}
-          >
-            <span>Active</span>
-          </ToggleGroup.Item>
-          <ToggleGroup.Item
-            value="completed"
-            aria-label="Completed todos"
-            onClick={() => filterTodoIds('completed')}
-          >
-            <span>Completed</span>
-          </ToggleGroup.Item>
-        </ToggleGroup.Root>
+      <div className='sm:hidden bg-white dark:bg-navy-900 text-gray-600 dark:text-purple-600 py-4 grid place-content-center rounded-sm drop-shadow-md'>
+        <FilterGroup />
       </div>
     </main>
   )
@@ -128,4 +103,37 @@ function TodoItem({ id }) {
   )
 }
 
-/* bg-linear-to-r from-gradient-2-start to-gradient-2-end */
+function FilterGroup() {
+  const filterTodoIds = useTodoStore(s => s.filterTodoIds)
+
+  return (
+    <ToggleGroup.Root
+      className='flex items-center gap-4 *:cursor-pointer *:aria-checked:text-blue-500'
+      type="single"
+      defaultValue="all"
+      aria-label="Filter todos"
+    >
+      <ToggleGroup.Item
+        value="all"
+        aria-label="All todos"
+        onClick={() => filterTodoIds('all')}
+      >
+        <span>All</span>
+      </ToggleGroup.Item>
+      <ToggleGroup.Item
+        value="active"
+        aria-label="Active todos"
+        onClick={() => filterTodoIds('active')}
+      >
+        <span>Active</span>
+      </ToggleGroup.Item>
+      <ToggleGroup.Item
+        value="completed"
+        aria-label="Completed todos"
+        onClick={() => filterTodoIds('completed')}
+      >
+        <span>Completed</span>
+      </ToggleGroup.Item>
+    </ToggleGroup.Root>
+  )
+}
