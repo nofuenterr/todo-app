@@ -3,9 +3,11 @@ import { useTodoStore } from '../stores/todoStore'
 import { Checkbox } from "radix-ui";
 import { CheckIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { AccessibleIcon } from "radix-ui";
+import { ToggleGroup } from "radix-ui";
 
 export default function Main() {
   const todoIds = useTodoStore(s => s.todoIds)
+  const filterTodoIds = useTodoStore(s => s.filterTodoIds)
   const deleteCompletedTodos = useTodoStore(s => s.deleteCompletedTodos)
 
   return (
@@ -32,6 +34,37 @@ export default function Main() {
           </div>
         )
       }
+
+      <div className='bg-white dark:bg-navy-900 text-gray-600 dark:text-purple-600 py-4 grid place-content-center rounded-sm drop-shadow-md'>
+        <ToggleGroup.Root
+          className='flex items-center gap-4 *:cursor-pointer *:aria-checked:text-blue-500'
+          type="single"
+          defaultValue="all"
+          aria-label="Filter todos"
+        >
+          <ToggleGroup.Item
+            value="all"
+            aria-label="All todos"
+            onClick={() => filterTodoIds('all')}
+          >
+            <span>All</span>
+          </ToggleGroup.Item>
+          <ToggleGroup.Item
+            value="active"
+            aria-label="Active todos"
+            onClick={() => filterTodoIds('active')}
+          >
+            <span>Active</span>
+          </ToggleGroup.Item>
+          <ToggleGroup.Item
+            value="completed"
+            aria-label="Completed todos"
+            onClick={() => filterTodoIds('completed')}
+          >
+            <span>Completed</span>
+          </ToggleGroup.Item>
+        </ToggleGroup.Root>
+      </div>
     </main>
   )
 }
@@ -83,7 +116,7 @@ function TodoItem({ id }) {
           <CheckIcon />
         </Checkbox.Indicator>
       </Checkbox.Root>
-      
+
       <span className={todo.complete ? 'text-gray-300 dark:text-purple-700 line-through' : 'text-inherit'}>{todo.title}</span>
 
       <button onClick={() => deleteTodo(id)} className='ml-auto cursor-pointer' aria-label='Delete todo'>

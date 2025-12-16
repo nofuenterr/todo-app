@@ -1,13 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
-
-interface Todo {
-  id: number,
-  title: string,
-  complete: boolean,
-}
-
+import { Todo } from '../types/todo'
 interface TodoStore {
   todoIds: number[],
   todoByIds: Record<number, Todo>,
@@ -16,6 +10,7 @@ interface TodoStore {
   toggleTodo: (id: number) => void,
   deleteTodo: (id: number) => void,
   deleteCompletedTodos: () => void,
+  filterTodoIds: (value: 'all' | 'active' | 'completed') => void,
 }
 
 export const useTodoStore = create<TodoStore>()(
@@ -23,6 +18,23 @@ export const useTodoStore = create<TodoStore>()(
     immer((set, get) => ({
       todoIds: [],
       todoByIds: {},
+      filterTodoIds: (value: 'all' | 'active' | 'completed') => set(state => {
+        const todos = Object.values(get().todoByIds)
+        state.todoIds = todos.filter(todo => {
+          switch (true) {
+            case value === 'all':
+              return true
+            case value === 'active':
+              if (!todo.complete) return true
+              return false
+            case value === 'completed':
+              if (todo.complete) return true
+              return false
+            default:
+              return true
+          }
+        }).map(todo => todo.id)
+      }),
       addTodo: (title: string) => set(state => {
         const id = Date.now()
         state.todoIds.push(id)
