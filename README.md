@@ -1,59 +1,101 @@
-## Project Source here
-Frontend Mentor
-# Project Title here
-Todo App
+# Todo App
 
-Todo App is a simple app that lets you create, read, toggle between done and not done, and delete todos.
+> A simple, clean todo app with filtering, theme toggle, and persistent data.
 
-### Features
-- Create, read, update, and delete todos
-- Filter select between all, active, and completed todos
-- Theme toggle between dark and light mode
-- Responsive across multiple screen sizes
+![Preview](public/Desktop-dark.png)
 
-### Built With
-- React + Vite
-- Tailwind CSS
-- Radix UI (components and icons)
-- Zustand (global state management and persistence)
-- React Hook Form (add todo input)
+**Live Demo:** [todo-app-five-jade-30.vercel.app](https://todo-app-five-jade-30.vercel.app)
 
-### Getting Started
-In order to setup and work on this project on your own, you will need to:
+---
 
-Clone this project:<br>
-`git clone https://github.com/nofuenterr/insert-git-repo-name-here.git`
+## Overview
 
-Once you have cloned this project, you can install the required dependencies by using:<br>
-`npm install`
+Todo App is a Frontend Mentor challenge solution for a classic task manager. Users can add, complete, and delete todos, filter by status (all, active, or completed), and toggle between light and dark mode. Todo data persists across sessions, and the app is fully responsive.
 
-A live demo of the project can be started by using:<br>
-`npm run preview`
+---
 
-Distribution files can be produced using:<br>
-`npm run build`
+## Features
 
-### Credits/Acknowledgments
-This project is for personal use only. I do not own any of the rights for the assets used in this project.
+- Create, complete, and delete todos
+- Filter by all, active, or completed
+- Light and dark theme toggle
+- Persistent todo data across sessions
+- Responsive layout for mobile, tablet, and desktop
 
-### Display
-#### Desktop: light mode
-![Desktop: light mode](public/display-light.png)
-#### Desktop: dark mode
-![Desktop: dark mode](public/display-desktop.png)
-#### Tablet
-![Tablet](public/display-tablet.png)
-#### Phone
-![Phone](public/display-phone.png)
+---
 
-### To-do
-- [ ] Automatically remove todo when toggling them on an active filter that isn't 'All'
-- [ ] Edit todo titles
-- [ ] More noticeable buttons/icons
-- [ ] Drag and drop feature to reorder list
-- [ ] Fix checkbox size warping when todo title is lengthy
+## Tech Stack
+
+| Category | Technology |
+|---|---|
+| Framework | React + Vite |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| Forms | React Hook Form |
+| UI Components | Radix UI |
+| State Management | Zustand |
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js `v18+`
+
+### Installation
+
+```bash
+git clone https://github.com/nofuenterr/todo-app.git
+cd todo-app
+npm install
+```
+
+### Running the App
+
+```bash
+npm run preview
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+---
+
+## Screenshots
+
+### Light Mode
+| Desktop | Tablet | Mobile | 
+|---|---|---|
+| ![Desktop](public/Desktop-light.png) | ![Tablet](public/Tablet-light.png) | ![Mobile](public/Mobile-light.png) |
+
+### Dark Mode
+| Desktop | Tablet | Mobile | 
+|---|---|---|
+| ![Desktop](public/Desktop-dark.png) | ![Tablet](public/Tablet-dark.png) | ![Mobile](public/Mobile-dark.png) |
+
+---
+
+## To-do
+
+- [ ] Fix: empty filter click doesn't update active style
+- [ ] Fix: scrollbar visible with no overflow
+- [ ] Fix: checkbox size warp on long todo titles
+- [ ] Auto-remove todo when toggling on a non-All filter
+- [ ] Edit todo titles inline
+- [ ] Drag and drop to reorder list
+- [ ] More visible action buttons/icons
 - [ ] Add animations
 
 ---
 
-Developed by **RR Nofuente**
+## Credits
+
+This project is a solution to a [Frontend Mentor](https://www.frontendmentor.io) challenge. I do not own the rights to any assets used.
+
+---
+
+*Developed by **RR Nofuente***
